@@ -1,6 +1,7 @@
 function computerPlay() {
   const MAX_CHOICES = 3;
   let choice = Math.floor(Math.random() * MAX_CHOICES);
+  // Check if valid choice is given
   if (choice === 0) {
     return "rock";
   } else if (choice === 1) {
@@ -12,6 +13,7 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
+  // If a valid selection, determine results.
   if (
     playerSelection === "rock" ||
     playerSelection === "paper" ||
@@ -38,6 +40,7 @@ function playRound(playerSelection, computerSelection) {
     } else {
       return "Tie! You both chose " + playerSelection + ".";
     }
+    // Otherwise return 0 to show it was not a valid choice.
   } else {
     return 0;
   }
@@ -53,10 +56,13 @@ function game() {
   let lose = 0;
   for (let i = 0; i < 5; i++) {
     choice = prompt("Enter your choice: ", "");
+    // Call function to determine result of round
     result = playRound(choice, computerPlay());
+    // If result isn't valid, set loop back one iteration to allow for a valid value.
     if (result === 0) {
       console.log("Not a valid choice. Try again.");
       i -= 1;
+      // Otherwise, search result to see if user won, tied or lost.
     } else {
       if (result.search(/win/i) != -1) {
         win += 1;
@@ -70,10 +76,15 @@ function game() {
       console.log(result);
     }
   }
-  if (win >= 3 || (tie > lose && win > lose)) {
-    console.log(`You win! ${win} wins | ${lose} losses | ${tie} ties`);
+  // This checks if you have more wins than losses
+  if (win > lose) {
+    console.log(
+      `You win! (>^_^)> | ${win} wins | ${lose} losses | ${tie} ties |`
+    );
+  } else if (win === lose) {
+    console.log(`You tie! | ${win} wins | ${lose} losses | ${tie} ties |`);
   } else {
-    console.log(`You lose! ${win} wins | ${lose} losses | ${tie} ties`);
+    console.log(`You lose! | ${win} wins | ${lose} losses | ${tie} ties |`);
   }
 }
 
