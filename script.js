@@ -79,12 +79,16 @@ function game() {
   // This checks if you have more wins than losses
   if (win > lose) {
     console.log(
-      `You win! (>^_^)> | ${win} wins | ${lose} losses | ${tie} ties |`
+      `~~You won the game! (>^_^)> | ${win} wins | ${lose} losses | ${tie} ties |~~`
     );
   } else if (win === lose) {
-    console.log(`You tie! | ${win} wins | ${lose} losses | ${tie} ties |`);
+    console.log(
+      `~~You tied the game! | ${win} wins | ${lose} losses | ${tie} ties |~~`
+    );
   } else {
-    console.log(`You lose! | ${win} wins | ${lose} losses | ${tie} ties |`);
+    console.log(
+      `~~You lost the game! | ${win} wins | ${lose} losses | ${tie} ties |~~`
+    );
   }
 }
 
